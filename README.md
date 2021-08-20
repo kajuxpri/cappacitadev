@@ -1,3 +1,2 @@
-Crie uma função que retorna os números pares, a seguir, utilize a função .filter() na
-variável numerosAleatorios passando a função que você criou como callback. Veja
-no slide sobre .filter() como fizemos
+Uma função que imprima todos os itens do array (você pode definir esta
+variável dentro da função): (vide schema.json)
