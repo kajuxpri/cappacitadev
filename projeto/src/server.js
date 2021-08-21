@@ -20,7 +20,19 @@ app.post('/pokemons', (req, res) => {
         tipo: req.body.tipo
     })
     res.send(pokemon)
-   
+})
+
+app.put('/pokemons/:id', (req, res) => {
+   const pokemon = dataBase.atualizarPokemon(req.params.id, {
+        nome: req.body.nome,
+        tipo: req.body.tipo,
+        id: parseInt(req.params.id)
+   })
+   res.send(pokemon)
+})
+
+app.delete('/pokemons/:id', (req, res) => {
+    res.send(dataBase.deletarPokemon(req.params.id))
 })
 
 app.listen(3003)

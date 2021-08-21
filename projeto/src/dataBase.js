@@ -3,7 +3,7 @@ const sequence = {
     get id() {return this._id++}
 }
 
-const pokemons = {}
+const pokemons = []
 
 function salvarPokemons(pokemon) {
     if(!pokemon.id) pokemon.id = sequence.id
@@ -19,4 +19,21 @@ function mostrarPokemons() {
     return Object.values (pokemons)
 }
 
-module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons }
+function atualizarPokemon(id, pokemon) {
+    pokemons[id] = pokemon
+    return pokemon
+}
+
+function deletarPokemon(id) {
+    sequence._id = sequence._id - 1
+    const pokemonDeletado = pokemons[id]
+    pokemons.splice(id, 1)
+    pokemons.forEach(pokemon => {
+        if(pokemon.id > id) {
+            pokemon.id = pokemon.id - 1
+        }
+    })
+    return pokemonDeletado
+}
+
+module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon }
