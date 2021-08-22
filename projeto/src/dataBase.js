@@ -72,4 +72,16 @@ function batalhaPokemon (id1, id2) {
  
 }
 
-module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon, batalhaPokemon }
+function curarPokemon(id) {
+    const pokemon = pokemons[id]
+
+    if(pokemon.hp <= 100) {
+        pokemon.hp = pokemon.hp + 20
+    }
+
+    if(pokemon.hp >= 100) pokemon.hp = 100
+
+    return `${pokemon.nome}: ${pokemon.hp}`
+}
+
+module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon, batalhaPokemon, curarPokemon }
