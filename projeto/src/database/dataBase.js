@@ -79,9 +79,12 @@ function curarPokemon(id) {
         pokemon.hp = pokemon.hp + 20
     }
 
-    if(pokemon.hp >= 100) pokemon.hp = 100
+    if(pokemon.hp >= 100) {
+        pokemon.hp = 100
+    } 
 
-    return `${pokemon.nome}: ${pokemon.hp}`
+
+    return `${pokemon.nome}: ${pokemon.hp}` 
 }
 
 module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon, batalhaPokemon, curarPokemon }
