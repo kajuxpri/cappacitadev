@@ -1,6 +1,6 @@
 const express = require ('express')
 const app = express()
-const dataBase = require ('./database/dataBase')
+const dataBase = require ('./database/databaseMysql')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded ({ extended: true }))
