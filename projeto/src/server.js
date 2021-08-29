@@ -8,10 +8,7 @@ app.use(bodyParser.urlencoded ({ extended: true }))
 app.post('/pokemons', async (req, res) => {
     const pokemon = await dataBase.salvarPokemons ({
         nome: req.body.nome,
-        tipo: req.body.tipo,
-        fraqueza: req.body.fraqueza,
-        resistencia: req.body.resistencia,
-        hp: 100
+        tipo: req.body.tipo
     })
     res.send(pokemon)
 })
