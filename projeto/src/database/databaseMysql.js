@@ -29,12 +29,20 @@ async function salvarPokemons(pokemon) {
   }
 }
 
-function mostrarPokemon(id) {
-    const queryInsertPokemon = `SELECT * FROM pokemons WHERE id = ${id}`
+async function mostrarPokemon(id) {
+    const querySelectPokemon = `SELECT * FROM pokemons WHERE id = ${id}`
+
+    const result = await databaseConnection.raw(querySelectPokemon)
+
+    return result [0]
 }
 
-function mostrarPokemons() {
-    return Object.values (pokemons)
+async function mostrarPokemons() {
+    const querySelectPokemon = `SELECT * FROM pokemons`
+
+    const result = await databaseConnection.raw(querySelectPokemon)
+
+    return result [0]
 }
 
 function atualizarPokemon(id, pokemon) {

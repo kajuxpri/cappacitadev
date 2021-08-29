@@ -5,15 +5,6 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded ({ extended: true }))
 
-
-app.get('/pokemons/:id', (req, res) => {
-    res.send( dataBase.mostrarPokemon(req.params.id))
-})
-
-app.get('/pokemons', (req, res) => {
-    res.send(dataBase.mostrarPokemons())
-})
-
 app.post('/pokemons', async (req, res) => {
     const pokemon = await dataBase.salvarPokemons ({
         nome: req.body.nome,
@@ -23,6 +14,14 @@ app.post('/pokemons', async (req, res) => {
         hp: 100
     })
     res.send(pokemon)
+})
+
+app.get('/pokemons/:id', async (req, res) => {
+    res.send(await dataBase.mostrarPokemon(req.params.id))
+})
+
+app.get('/pokemons', async (req, res) => {
+    res.send(await dataBase.mostrarPokemons())
 })
 
 app.put('/pokemons/:id', (req, res) => {
