@@ -9,7 +9,7 @@ async function salvarPokemons(pokemon) {
        tipo: 'Elétrico'
    }
    */
-  const queryInsertPokemon = `INSERT INTO pokemons(nome_pokemon, tipo) VALUES ('${pokemon.nome}' '${pokemon.tipo}')`
+  const queryInsertPokemon = `INSERT INTO pokemons(nome_pokemon, tipo) VALUES ('${pokemon.nome}', '${pokemon.tipo}')`
 
   const result = await databaseConnection.raw(queryInsertPokemon)
 
@@ -30,7 +30,7 @@ async function salvarPokemons(pokemon) {
 }
 
 function mostrarPokemon(id) {
-    return pokemons[id] || {}
+    const queryInsertPokemon = `SELECT * FROM pokemons WHERE id = ${id}`
 }
 
 function mostrarPokemons() {

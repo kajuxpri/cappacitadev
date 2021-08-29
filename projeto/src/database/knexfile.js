@@ -8,7 +8,7 @@ module.exports = {
     password : 'Cajux2219!!',
     database : 'pokemon'
   },
-  debug: true  
+  debug: true
 }
 
 

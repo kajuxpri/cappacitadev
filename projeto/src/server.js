@@ -7,15 +7,15 @@ app.use(bodyParser.urlencoded ({ extended: true }))
 
 
 app.get('/pokemons/:id', (req, res) => {
-    res.send(dataBase.mostrarPokemon(req.params.id))
+    res.send( dataBase.mostrarPokemon(req.params.id))
 })
 
 app.get('/pokemons', (req, res) => {
     res.send(dataBase.mostrarPokemons())
 })
 
-app.post('/pokemons', (req, res) => {
-    const pokemon = dataBase.salvarPokemons ({
+app.post('/pokemons', async (req, res) => {
+    const pokemon = await dataBase.salvarPokemons ({
         nome: req.body.nome,
         tipo: req.body.tipo,
         fraqueza: req.body.fraqueza,
@@ -50,4 +50,4 @@ app.post('/pokemons/:id', (req, res) => {
     res.send(pokemon)
 })
 
-app.listen(3003)
+app.listen(3002)
