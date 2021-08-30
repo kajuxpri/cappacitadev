@@ -34,7 +34,8 @@ async function salvarPokemons(pokemon) {
 async function mostrarPokemon(id) {
     const result = await databaseConnection('pokemons').where({id})
 
-    return result [0]
+      return result
+
 }
 
 async function mostrarPokemons() {
@@ -70,7 +71,18 @@ async function alterarPokemon(id, pokemon) {
 async function deletarPokemon(id) {
     const result = await databaseConnection('pokemons').where({id}).del()
     
-    return result[0]
+    console.log(result)
+
+    if(result) {
+        return {
+            id: "Campo deletado com sucesso!"
+        }
+    }else{
+        console.error("Erro!")
+        return{
+            error: "Campo Inexistente ou já deletado."
+        }
+    }
 }
 
 function batalhaPokemon (id1, id2) {
