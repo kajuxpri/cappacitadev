@@ -57,7 +57,7 @@ async function alterarPokemon(id, pokemon) {
     if(result) {
         return {
             ...pokemon,
-            id: result[0]
+            id
         }
     }else{
         console.error("Deu erro!")
