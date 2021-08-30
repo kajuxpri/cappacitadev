@@ -32,7 +32,7 @@ async function salvarPokemons(pokemon) {
 }
 
 async function mostrarPokemon(id) {
-    const result = await databaseConnection('pokemons').where ({id})
+    const result = await databaseConnection('pokemons').where({id})
 
     return result [0]
 }
@@ -67,16 +67,10 @@ async function alterarPokemon(id, pokemon) {
     }
 }
 
-function deletarPokemon(id) {
-    sequence._id = sequence._id - 1
-    const pokemonDeletado = pokemons[id]
-    pokemons.splice(id, 1)
-    pokemons.forEach(pokemon => {
-        if(pokemon.id > id) {
-            pokemon.id = pokemon.id - 1
-        }
-    })
-    return pokemonDeletado
+async function deletarPokemon(id) {
+    const result = await databaseConnection('pokemons').where({id}).del()
+    
+    return result[0]
 }
 
 function batalhaPokemon (id1, id2) {
@@ -130,4 +124,12 @@ function curarPokemon(id) {
     return `${pokemon.nome}: ${pokemon.hp}` 
 }
 
-module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, alterarPokemon, deletarPokemon, batalhaPokemon, curarPokemon }
+module.exports = {
+    salvarPokemons, 
+    mostrarPokemon, 
+    mostrarPokemons, 
+    alterarPokemon, 
+    deletarPokemon, 
+    batalhaPokemon, 
+    curarPokemon
+}
