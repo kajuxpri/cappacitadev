@@ -10,7 +10,8 @@ async function salvarPokemons(pokemon) {
    */
   const insertPokemon = {
       nome_pokemon: pokemon.nome,
-      tipo: pokemon.tipo
+      tipo: pokemon.tipo,
+      local_origem: pokemon.origem
   }
 
   const result = await databaseConnection('pokemons').insert(insertPokemon)
@@ -21,6 +22,7 @@ async function salvarPokemons(pokemon) {
       return {
         nome: pokemon.nome,
         tipo: pokemon.tipo,
+        origem: pokemon.origem,
         id: result[0]
       }
   }else{
