@@ -22,14 +22,11 @@ app.get('/pokemons', async (req, res) => {
     res.send(await dataBase.mostrarPokemons())
 })
 
-app.put('/pokemons/:id', (req, res) => {
-   const pokemon = dataBase.atualizarPokemon(req.params.id, {
+app.put('/pokemons/:id', async (req, res) => {
+   const pokemon = await dataBase.alterarPokemon(req.params.id, {
         nome: req.body.nome,
         tipo: req.body.tipo,
-        fraqueza: req.body.fraqueza,
-        resistencia: req.body.resistencia,
-        hp: 100,
-        id: parseInt(req.params.id)
+        origem: req.body.origem
    })
    res.send(pokemon)
 })

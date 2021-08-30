@@ -43,9 +43,28 @@ async function mostrarPokemons() {
     return result
 }
 
-function atualizarPokemon(id, pokemon) {
-    pokemons[id] = pokemon
-    return pokemon
+async function alterarPokemon(id, pokemon) {
+    const updatePokemon = {
+        nome_pokemon: pokemon.nome,
+        tipo: pokemon.tipo,
+        local_origem: pokemon.origem 
+    }
+
+    const result = await databaseConnection('pokemons').where({ id }).update(updatePokemon)
+
+    console.log(result)
+
+    if(result) {
+        return {
+            ...pokemon,
+            id: result[0]
+        }
+    }else{
+        console.error("Deu erro!")
+        return{
+            error: "Deu erro na inserção"
+        }
+    }
 }
 
 function deletarPokemon(id) {
@@ -111,4 +130,4 @@ function curarPokemon(id) {
     return `${pokemon.nome}: ${pokemon.hp}` 
 }
 
-module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon, batalhaPokemon, curarPokemon }
+module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, alterarPokemon, deletarPokemon, batalhaPokemon, curarPokemon }
