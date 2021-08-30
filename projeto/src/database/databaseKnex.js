@@ -20,9 +20,7 @@ async function salvarPokemons(pokemon) {
 
   if(result) {
       return {
-        nome: pokemon.nome,
-        tipo: pokemon.tipo,
-        origem: pokemon.origem,
+        ...pokemon,
         id: result[0]
       }
   }else{
